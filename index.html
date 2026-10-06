@@ -91,6 +91,7 @@
       display: flex;
       list-style: none;
       gap: 2rem;
+      align-items: center;
     }
 
     nav a {
@@ -187,7 +188,7 @@
       color: var(--primary-cyan);
     }
 
-    /* Hero Profile Image Styling - Optimized for Face Zoom */
+    /* Hero Profile Image Styling */
     .hero-image-container {
       flex: 0.8;
       display: flex;
@@ -210,8 +211,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 15%; /* التركيز على الجزء العلوي والوجه */
-      transform: scale(1.25); /* تقريب الصورة للتركيز على الوجه */
+      object-position: center 15%;
+      transform: scale(1.25);
       border-radius: 22px;
       background: #1e293b;
       display: block;
@@ -221,6 +222,7 @@
     .btn-group {
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -444,6 +446,7 @@
         <li><a href="#labs">Lectures & Labs</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="CV.pdf" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 1rem; font-size: 0.85rem;"><i class="fas fa-file-arrow-down"></i> CV</a></li>
       </ul>
     </nav>
   </header>
@@ -463,13 +466,14 @@
 
       <!-- Contact Info Bar -->
       <div class="contact-info-list">
-        <div class="contact-info-item"><i class="fas fa-location-dot"></i> Cairo, Egypt</div>
-        <div class="contact-info-item"><i class="fas fa-phone"></i> +20 120 000 0000</div>
-        <div class="contact-info-item"><i class="fas fa-envelope"></i> beboonsy794@gmail.com</div>
+        <div class="contact-info-item"><i class="fas fa-location-dot"></i> Assiut / Cairo, Egypt</div>
+        <div class="contact-info-item"><i class="fas fa-phone"></i> +20 128 727 1620</div>
+        <div class="contact-info-item"><i class="fas fa-envelope"></i> abanoponsygerges6@gmail.com</div>
       </div>
 
       <div class="btn-group">
-        <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> View Projects</a>
+        <a href="CV.pdf" download target="_blank" class="btn btn-primary"><i class="fas fa-file-arrow-down"></i> Download CV</a>
+        <a href="#projects" class="btn btn-secondary"><i class="fas fa-code"></i> View Projects</a>
         <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
       </div>
     </div>
@@ -477,7 +481,7 @@
     <!-- Personal Photo Box with CSS Zoom & Positioning -->
     <div class="hero-image-container">
       <div class="profile-img-wrapper">
-      <img src="photo-portfolio.jpeg" alt="Abanoub Onsy Gerges" class="profile-img">
+        <img src="photo-portfolio.jpeg" alt="Abanoub Onsy Gerges" class="profile-img" onerror="this.src='https://via.placeholder.com/320x320/0f172a/00f2fe?text=Abanoub+Onsy'">
       </div>
     </div>
   </section>
@@ -651,7 +655,7 @@
         <a href="https://github.com/beboonsy" target="_blank" class="btn btn-secondary">
           <i class="fab fa-github"></i> GitHub Profile
         </a>
-        <a href="mailto:beboonsy794@gmail.com" class="btn btn-secondary">
+        <a href="mailto:abanoponsygerges6@gmail.com" class="btn btn-secondary">
           <i class="fas fa-envelope"></i> Send Email
         </a>
       </div>
@@ -663,4 +667,4 @@
   </footer>
 
 </body>
-</html>3
+</html>
