@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abanoub Onsy | Full-Stack .NET Developer Portfolio</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-dark: #070a13;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --primary-cyan: #00f2fe;
+      --primary-blue: #4facfe;
+      --accent-purple: #7f00ff;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background Effects */
+    .bg-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.12), transparent 70%);
+      top: -150px;
+      left: -150px;
+      z-index: -1;
+      filter: blur(90px);
+    }
+    .bg-glow-2 {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(127, 0, 255, 0.12), transparent 70%);
+      bottom: -200px;
+      right: -200px;
+      z-index: -1;
+      filter: blur(90px);
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.2rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(7, 10, 19, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-card);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      color: var(--primary-cyan);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary-cyan);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      padding: 9rem 8% 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1.2rem;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      border-radius: 50px;
+      color: var(--primary-cyan);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--primary-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary-cyan);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-info-item i {
+      color: var(--primary-cyan);
+    }
+
+    /* Hero Profile Image Styling - Optimized for Face Zoom */
+    .hero-image-container {
+      flex: 0.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-img-wrapper {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      border-radius: 30px;
+      padding: 8px;
+      background: linear-gradient(135deg, var(--primary-cyan), var(--accent-purple));
+      box-shadow: 0 20px 50px rgba(0, 242, 254, 0.25);
+      overflow: hidden;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%; /* التركيز على الجزء العلوي والوجه */
+      transform: scale(1.25); /* تقريب الصورة للتركيز على الوجه */
+      border-radius: 22px;
+      background: #1e293b;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(79, 172, 254, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(79, 172, 254, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-card);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    /* Global Sections Styling */
+    section {
+      padding: 6rem 8%;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 0.3rem;
+    }
+
+    /* Grids & Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 2.2rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: rgba(0, 242, 254, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Project Image Showcase Styling */
+    .project-card {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-img-box {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-img-box img {
+      transform: scale(1.08);
+    }
+
+    .project-content {
+      padding: 1.8rem;
+    }
+
+    /* Skills Tags */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .skill-tag {
+      padding: 0.6rem 1.1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-card);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-tag i {
+      color: var(--primary-cyan);
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid var(--border-card);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -7px;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary-cyan);
+      box-shadow: 0 0 12px var(--primary-cyan);
+    }
+
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--primary-cyan);
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(7, 10, 19, 0.9));
+      border: 1px solid var(--border-card);
+      border-radius: 28px;
+      padding: 4rem 2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-card);
+    }
+
+    @media (max-width: 968px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 7rem;
+      }
+      .hero-content {
+        max-width: 100%;
+      }
+      .contact-info-list {
+        justify-content: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      nav ul {
+        display: none;
+      }
+      .profile-img-wrapper {
+        width: 240px;
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="logo">Abanoub<span>.Onsy</span></div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#labs">Lectures & Labs</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="about">
+    <div class="hero-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Available for .NET & Full-Stack Opportunities
+      </div>
+      <h1>Hi, I'm <span class="gradient-text">Abanoub Onsy</span></h1>
+      <h2>Software Engineer & .NET Full-Stack Developer</h2>
+      <p>
+        Computer Science student at EELU & .NET Full-Stack Developer under DEPI initiative. Specialized in building enterprise-grade Web APIs, relational databases, and modern interactive front-end applications.
+      </p>
+
+      <!-- Contact Info Bar -->
+      <div class="contact-info-list">
+        <div class="contact-info-item"><i class="fas fa-location-dot"></i> Cairo, Egypt</div>
+        <div class="contact-info-item"><i class="fas fa-phone"></i> +20 120 000 0000</div>
+        <div class="contact-info-item"><i class="fas fa-envelope"></i> beboonsy794@gmail.com</div>
+      </div>
+
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> View Projects</a>
+        <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
+      </div>
+    </div>
+
+    <!-- Personal Photo Box with CSS Zoom & Positioning -->
+    <div class="hero-image-container">
+      <div class="profile-img-wrapper">
+        <img src="D:/photo/WhatsApp Image 2026-09-29 at 9.43.13 PM.jpeg" alt="Abanoub Onsy Gerges" class="profile-img" onerror="this.src='https://via.placeholder.com/320x320/0f172a/00f2fe?text=Abanoub+Onsy'">
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section id="skills">
+    <div class="section-header">
+      <h2 class="section-title">Technical Skills & Tech Stack</h2>
+      <p class="section-subtitle">Core technologies and development tools I work with</p>
+    </div>
+
+    <div class="skills-container">
+      <div class="skill-tag"><i class="fab fa-microsoft"></i> C# & .NET Core</div>
+      <div class="skill-tag"><i class="fas fa-server"></i> ASP.NET Core Web API</div>
+      <div class="skill-tag"><i class="fas fa-database"></i> SQL Server / T-SQL</div>
+      <div class="skill-tag"><i class="fas fa-sitemap"></i> Entity Framework Core</div>
+      <div class="skill-tag"><i class="fab fa-html5"></i> HTML5 & CSS3</div>
+      <div class="skill-tag"><i class="fab fa-js"></i> JavaScript (ES6+)</div>
+      <div class="skill-tag"><i class="fab fa-git-alt"></i> Git & GitHub</div>
+      <div class="skill-tag"><i class="fas fa-network-wired"></i> Wireshark & Packet Tracer</div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Showcase -->
+  <section id="projects">
+    <div class="section-header">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Practical applications with visual showcase</p>
+    </div>
+
+    <div class="grid">
+      <!-- Project 1 (Modern Login Page) -->
+      <div class="card project-card">
+        <div class="project-img-box">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Modern Animated Login Portal">
+        </div>
+        <div class="project-content">
+          <h3>Modern Animated Login Portal</h3>
+          <p style="color: var(--text-muted); margin: 0.8rem 0; font-size: 0.95rem;">
+            A responsive, interactive login & registration web interface featuring sleek glassmorphism UI, form validation, animated inputs, and dark theme support.
+          </p>
+          <div class="skills-container" style="margin-top: 1rem;">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 (AI & Robotics System) -->
+      <div class="card project-card">
+        <div class="project-img-box">
+          <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop" alt="AI Robotics & Autonomous Controller">
+        </div>
+        <div class="project-content">
+          <h3>AI Robotics & Autonomous System</h3>
+          <p style="color: var(--text-muted); margin: 0.8rem 0; font-size: 0.95rem;">
+            Intelligent robotics control system integrating computer vision modules, real-time sensor processing, and machine learning models for autonomous navigation.
+          </p>
+          <div class="skills-container" style="margin-top: 1rem;">
+            <span class="skill-tag">AI / ML</span>
+            <span class="skill-tag">Robotics</span>
+            <span class="skill-tag">C# / Python</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card project-card">
+        <div class="project-img-box">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Responsive Portal Web App">
+        </div>
+        <div class="project-content">
+          <h3>Responsive Portal Web App</h3>
+          <p style="color: var(--text-muted); margin: 0.8rem 0; font-size: 0.95rem;">
+            Interactive web portal UI featuring clean HTML5 structure, CSS Grid/Flexbox layouts, dynamic dark mode aesthetic, and modern JS interactions.
+          </p>
+          <div class="skills-container" style="margin-top: 1rem;">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lectures & Practical Assignments -->
+  <section id="labs">
+    <div class="section-header">
+      <h2 class="section-title">Lectures & Practical Assignments</h2>
+      <p class="section-subtitle">Key coursework and hands-on laboratory deliverables</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <i class="fas fa-book-code" style="font-size: 1.8rem; color: var(--primary-cyan); margin-bottom: 0.8rem;"></i>
+        <h3>ASP.NET Core REST API Architecture</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Implementation of Repository Pattern, Dependency Injection, Controller routing, and DTOs mapping during DEPI development sessions.
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-layer-group" style="font-size: 1.8rem; color: var(--primary-blue); margin-bottom: 0.8rem;"></i>
+        <h3>SQL Stored Procedures & Triggers</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Hands-on database lecture tasks covering indexing, stored procedures, triggers, and aggregated data analysis.
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-shield-halved" style="font-size: 1.8rem; color: var(--accent-purple); margin-bottom: 0.8rem;"></i>
+        <h3>Network Protocols & Analysis</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Practical analysis of TCP/IP handshake, HTTP/HTTPS packet inspection using Wireshark and topology simulations in Packet Tracer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Experience -->
+  <section id="experience">
+    <div class="section-header">
+      <h2 class="section-title">Education & Track Experience</h2>
+      <p class="section-subtitle">Academic journey and training tracks</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item card">
+        <div class="timeline-date">2023 - 2027 (Expected)</div>
+        <h3>Bachelor of Computer Science</h3>
+        <p style="color: var(--primary-cyan); font-weight: 600;">Egyptian E-Learning University (EELU)</p>
+        <p style="margin-top: 0.5rem; color: var(--text-muted);">
+          Studying software engineering principles, algorithms, data structures, operating systems, and database systems.
+        </p>
+      </div>
+
+      <div class="timeline-item card">
+        <div class="timeline-date">DEPI Track Track: ONL5_SWD5_S4</div>
+        <h3>.NET Full-Stack Web Development</h3>
+        <p style="color: var(--primary-cyan); font-weight: 600;">Digital Egypt Pioneers Initiative (DEPI)</p>
+        <p style="margin-top: 0.5rem; color: var(--text-muted);">
+          Mastering full-stack web applications using C#, ASP.NET Core API, SQL Server, EF Core, and front-end integration.
+        </p>
+      </div>
+
+      <div class="timeline-item card">
+        <div class="timeline-date">NTI Certified</div>
+        <h3>Networking & Cybersecurity Track</h3>
+        <p style="color: var(--primary-cyan); font-weight: 600;">National Telecommunication Institute (NTI)</p>
+        <p style="margin-top: 0.5rem; color: var(--text-muted);">
+          Hands-on training in network configuration, Cisco routing/switching, packet analysis, and security fundamentals.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="contact-card">
+      <h2 style="font-size: 2.5rem; margin-bottom: 0.8rem;">Let's Work Together</h2>
+      <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem;">
+        I am currently available for .NET Developer roles, full-stack projects, and technical collaborations.
+      </p>
+      
+      <div class="btn-group" style="justify-content: center; flex-wrap: wrap;">
+        <a href="https://www.linkedin.com/in/abanoub-onsy-7443b32a6/" target="_blank" class="btn btn-primary">
+          <i class="fab fa-linkedin"></i> LinkedIn Profile
+        </a>
+        <a href="https://github.com/beboonsy" target="_blank" class="btn btn-secondary">
+          <i class="fab fa-github"></i> GitHub Profile
+        </a>
+        <a href="mailto:beboonsy794@gmail.com" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i> Send Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Abanoub Onsy Gerges. Built with Passion & Precision.</p>
+  </footer>
+
+</body>
+</html>3
